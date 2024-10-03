@@ -1,3 +1,29 @@
+! BlueZ updated for Raspberry Pi !
+
+I went to set up a Raspberry Pi Zero W as a Bluetooth LE MIDI Hub, as per this tutorial:
+
+https://neuma.studio/raspberry-pi-as-usb-bluetooth-midi-host/
+
+Unfortunately, I hit compilation issues with the recommended fork of Bluez
+(https://github.com/oxesoft/bluez).
+
+So, I decided to compile the official Bluez with MIDI enabled, I then discovered that
+the btmidi-server command didn't exist. So, I've brought it across from the oxesoft repo.
+
+I've then edited it to make it run, notably having to update a few calls that map slightly
+differently now in the updated Bluez stack. If you're unsure, take btmidi-server.c from 
+the tools dir, and compare it against btmidi-server.c from the oxesoft repo.
+
+Otherwise this is provided simply as a pointer for others who may be hitting similar issues.
+
+Thanks,
+
+Dave Wood, 3rd October, 2024
+
+(NO WARRANTY, ALL RIGHTS AND LICENSES RESERVED)
+
+******************************************
+
 BlueZ - Bluetooth protocol stack for Linux
 ******************************************
 
