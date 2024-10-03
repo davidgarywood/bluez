@@ -590,3 +590,13 @@ tools_btpclientctl_SOURCES = tools/btpclientctl.c client/display.c
 tools_btpclientctl_LDADD = src/libshared-mainloop.la src/libshared-glib.la \
 				lib/libbluetooth-internal.la -lreadline
 endif
+
+if MIDI
+bin_PROGRAMS += tools/btmidi-server
+
+tools_btmidi_server_SOURCES = tools/btmidi-server.c src/uuid-helper.c profiles/midi/libmidi.h profiles/midi/libmidi.c
+tools_btmidi_server_CFLAGS = $(AM_CFLAGS) @ALSA_CFLAGS@ -DMIDI_TEST
+tools_btmidi_server_LDADD = src/libshared-mainloop.la \
+                                                lib/libbluetooth-internal.la \
+                                                @GLIB_LIBS@ @ALSA_LIBS@
+endif
